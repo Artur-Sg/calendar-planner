@@ -1,4 +1,6 @@
+import { Navigate } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
+import { RouteNames } from '../routes/enums/route-names';
 import { privateRoutes, publicRoutes } from '../routes/index';
 import IRoute from '../routes/interfaces/routes';
 
@@ -14,6 +16,7 @@ const AppRouter = () => {
           key={route.path}
         />
       ))}
+      <Route path="*" element={<Navigate to={RouteNames.EVENT} />}></Route>
     </Routes>
   ) : (
     <Routes>
@@ -24,6 +27,7 @@ const AppRouter = () => {
           key={route.path}
         />
       ))}
+      <Route path="*" element={<Navigate to={RouteNames.LOGIN} />}></Route>
     </Routes>
   );
 };
