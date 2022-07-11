@@ -1,13 +1,14 @@
 import { Navigate } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
+import { UseTypeSelector } from '../hooks/useTypedSelector';
 import { RouteNames } from '../routes/enums/route-names';
 import { privateRoutes, publicRoutes } from '../routes/index';
 import IRoute from '../routes/interfaces/routes';
 
 const AppRouter = () => {
-  const auth = true;
+  const { isAuth } = UseTypeSelector((state) => state.authReducer);
 
-  return auth ? (
+  return isAuth ? (
     <Routes>
       {privateRoutes.map((route: IRoute) => (
         <Route
